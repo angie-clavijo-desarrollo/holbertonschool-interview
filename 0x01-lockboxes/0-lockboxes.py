@@ -1,3 +1,11 @@
+#!/usr/bin/python3
+
+"""
+Function with paramter lists of list
+each lists the index[0] unlocked other box of lists
+"""
+
+
 def canUnlockAll(boxes):
     boxUnlocked = [0]
 
