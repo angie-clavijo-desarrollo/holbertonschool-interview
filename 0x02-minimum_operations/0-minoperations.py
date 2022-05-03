@@ -1,36 +1,30 @@
 #!/usr/bin/python3
 """
-In a text file, there is a single character H. Your text editor can execute only two operations 
-in this file: Copy All and Paste. Given a number n, write a method that calculates the fewest 
+In a text file, there is a single character H.
+Your text editor can execute only two operations
+in this file: Copy All and Paste. Given a
+number n, write a method that calculates the fewest
 number of operations needed to result in exactly n H characters in the file.
 """
 
 
-def canUnlockAll(boxes):
+def minOperations(n):
     """
-    Verify if box is blocked
+    Verify if could be execute two operations
     """
 
-    if boxes is None or len(boxes) == 0:
-        return False
+    result = 0
+    i = 2
 
-    unlocked = []
-    keys = []
-    for i in boxes:
-        unlocked.append(0)
+    if isinstance(n, int) and n < 2:
+        return 0
 
-    unlocked[0] = 1
-    keys.append(0)
-    while keys:
-        key = keys.pop(0)
-        new_keys = boxes[key]
-        unlocked[key] = 1
-        for new_key in new_keys:
-            if int(new_key) < len(boxes) and unlocked[new_key] == 0:
-                keys.append(new_key)
-                unlocked[new_key] = 1
+    while i <= n + 1:
+        if n % i == 0:
+            result += i
+            n //= i
+            i = 2
+        else:
+            i += 1
 
-    if 0 in unlocked:
-        return False
-
-    return True
+    return result
